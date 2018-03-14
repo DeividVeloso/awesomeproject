@@ -13,6 +13,9 @@ import io.fabric.sdk.android.Fabric;
 import java.util.Arrays;
 import java.util.List;
 
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
+
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -24,7 +27,9 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+          new RNFirebasePackage(),
+          new RNFirebaseCrashlyticsPackage()
       );
     }
 
@@ -43,15 +48,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
-    Crashlytics.log("Ola Deivid");
-    Crashlytics.getInstance().crash();
-   /* try {
-      throw new Exception("Teste");
-    } catch (Exception e) {
-      Crashlytics.getInstance().crash();
-      Crashlytics.logException(e);
-      // handle your exception here!
-    }*/
     SoLoader.init(this, /* native exopackage */ false);
   }
 }

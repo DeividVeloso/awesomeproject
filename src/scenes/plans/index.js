@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, RefreshControl } from "react-native";
+import firebase from 'react-native-firebase';
 
 class PlanScreen extends Component {
   constructor(props) {
@@ -26,6 +27,11 @@ class PlanScreen extends Component {
 
   renderItemsRefresh() {
     console.log("Entrou Refrsh");
+    firebase.fabric.crashlytics().log("MEU Jovem Alex agora vai!");
+    firebase.fabric.crashlytics().crash();
+    // const vamosver = firebase.fabric.crashlytics();
+    // vamosver.log("MEU Jovem Alex agora vai!");
+    // vamosver.crash();
     this.setState({ refreshing: true });
     let products = this.state.products;
     for (let index = 0; index <= 10; index++) {
