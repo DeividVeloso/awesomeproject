@@ -43,13 +43,15 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
-    try {
+    Crashlytics.log("Ola Deivid");
+    Crashlytics.getInstance().crash();
+   /* try {
       throw new Exception("Teste");
     } catch (Exception e) {
       Crashlytics.getInstance().crash();
       Crashlytics.logException(e);
       // handle your exception here!
-    }
+    }*/
     SoLoader.init(this, /* native exopackage */ false);
   }
 }
